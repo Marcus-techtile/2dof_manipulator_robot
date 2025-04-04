@@ -29,12 +29,14 @@ This project demonstrates the implementation of a 2-DOF robotic manipulator. The
 - MATLAB R2020a or later.
 
 ## Project Structure
+
+```
 2dof_manipulator/
 │
-├── simulate_2dof_robot.m # Direct integration simulation
-├── simulate_2dof_robot_ode45.m # ODE45-based simulation
-├── plot_2dof_model.m # Plotting and animation functions
+├── simulate_2dof_robot.m         # Direct integration simulation
+├── simulate_2dof_robot_ode45.m   # ODE45-based simulation
+├── plot_2dof_model.m             # Plotting and animation functions
 │
 └── robot_model/
-├── manipulator_dynamics.m # Core dynamics functions
-└── manipulator_dynamics_ode45.m # ODE45 compatible dynamics
+    ├── manipulator_dynamics.m       # Core dynamics functions
+    └── manipulator_dynamics_ode45.m # ODE45 compatible dynamics
