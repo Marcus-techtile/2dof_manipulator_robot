@@ -6,6 +6,7 @@
 current_dir = fileparts(mfilename('fullpath'));
 addpath(current_dir);
 addpath(fullfile(current_dir, 'robot_model'));
+addpath(fullfile(current_dir, 'visualization'));
 
 clear;
 clc;
@@ -43,7 +44,7 @@ q_dot(:,1) = [0; 0];
 %% Manual Torque Input
 % Define the torque input for each joint over time
 % Example: constant torque
-tau = [2; 0];  % Torque for joint 1 and joint 2
+tau = [0.2; 0];  % Torque for joint 1 and joint 2
 
 %% Main Simulation Loop
 % Simulation options
