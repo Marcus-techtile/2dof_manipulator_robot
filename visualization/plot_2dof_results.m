@@ -1,4 +1,4 @@
-function plot_adaptive_smc_results(t, q, q_d, tau, tau_eq, tau_rob, disturbance, e_all, e_dot_all, s_all, e_norm, s_norm, rho_hat_history, animate, l1, l2, plotOptions)
+function plot_2dof_results(t, q, q_d, tau, tau_eq, tau_rob, disturbance, e_all, e_dot_all, s_all, e_norm, s_norm, rho_hat_history, animate, l1, l2, plotOptions)
     % Plot results for 2DOF manipulator with adaptive SMC controller
     % Inputs:
     %   t - Time vector
@@ -192,36 +192,6 @@ function plot_adaptive_smc_results(t, q, q_d, tau, tau_eq, tau_rob, disturbance,
         title('Sliding Variable Norm', 'FontSize', 12);
         grid on;
     end
-
-    %% End-Effector Trajectory
-    figure('Name', 'End-Effector Trajectory', 'Position', [350, 300, 700, 500]);
-    
-    % Calculate end-effector positions for actual and desired trajectories
-    x_ee = zeros(1, length(t));
-    y_ee = zeros(1, length(t));
-    x_ee_d = zeros(1, length(t));
-    y_ee_d = zeros(1, length(t));
-    
-    for i = 1:length(t)
-        % Actual trajectory
-        x_ee(i) = l1*cos(q(1,i)) + l2*cos(q(1,i) + q(2,i));
-        y_ee(i) = l1*sin(q(1,i)) + l2*sin(q(1,i) + q(2,i));
-        
-        % Desired trajectory
-        x_ee_d(i) = l1*cos(q_d(1,i)) + l2*cos(q_d(1,i) + q_d(2,i));
-        y_ee_d(i) = l1*sin(q_d(1,i)) + l2*sin(q_d(1,i) + q_d(2,i));
-    end
-    
-    % Plot end-effector trajectories
-    plot(x_ee_d, y_ee_d, 'r--', 'LineWidth', 2);
-    hold on;
-    plot(x_ee, y_ee, 'b-', 'LineWidth', 1.5);
-    xlabel('X Position (m)', 'FontSize', 12);
-    ylabel('Y Position (m)', 'FontSize', 12);
-    title('End-Effector Trajectory', 'FontSize', 14);
-    legend('Desired', 'Actual', 'FontSize', 10);
-    axis equal;
-    grid on;
 
     %% Animate the 2DOF Manipulator
     if plotOptions.animation
